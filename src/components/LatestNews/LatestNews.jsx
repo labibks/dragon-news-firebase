@@ -8,7 +8,7 @@ const LatestNews = () => {
         <Marquee className='flex gap-5' pauseOnHover={true} speed={60}>
           <p className='font-semibold'>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, enim!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia error sit culpa ducimus cum magni fuga odit? Facere, nesciunt. Asperiores quibusdam vel voluptas minus dolores tempore, odit architecto nam, voluptates, obcaecati vitae! Provident placeat soluta earum ea voluptates maiores aliquid!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia error sit culpa ducimus cum magni fuga odit? Facere, nesciunt. Asperiores quibusdam vel voluptas minus dolores tempore, odit architecto nam, voluptates, obcaecati vitae! Provident placeat soluta earum ea voluptates maiores aliquid!!
           </p>
         </Marquee>
       </div>

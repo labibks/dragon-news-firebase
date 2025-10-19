@@ -3,7 +3,7 @@ import { GoArrowLeft } from 'react-icons/go';
 import { Link } from 'react-router';
 
 const NewsDetailsCard = ({news}) => {
-    console.log(news)
+    // console.log(news)
     return (
       <div className="space-y-5">
         <img src={news.image_url} alt="" />

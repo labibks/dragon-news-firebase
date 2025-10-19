@@ -6,47 +6,54 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AuthenticationLayout from "../layouts/AuthenticationLayout";
 import NewDetails from "../Pages/NewsDetails/NewDetails";
+import PrivetRoute from "../components/PrivetRoutes/PrivetRoute";
+import Loading from "../Pages/Loading/Loading";
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <HomeLayout></HomeLayout>,
-        children: [
-            {
-                path: '/',
-                Component: Home
-            },
-            {
-                path: '/category/:id',
-                Component: CategoryNews,
-                loader: ()=> fetch('/news.json')
-            }
-        ]
-    },
-    {
-        path: '/auth',
-        element: <AuthenticationLayout></AuthenticationLayout>,
-        children: [
-            {
-                path: '/auth/login',
-                Component: Login
-            },
-            {
-                path: '/auth/register',
-                Component: Register
-            },
-        ]
-    },
-    {
-        path: '/news-details/:id',
-        element: <NewDetails></NewDetails>,
-        loader: ()=> fetch('/news.json')
-    },
-    {
-        path: '/*',
-        element: <h2>Error 404</h2>
-    }
-
+  {
+    path: "/",
+    element: <HomeLayout></HomeLayout>,
+    children: [
+      {
+        path: "/",
+        Component: Home,
+      },
+      {
+        path: "/category/:id",
+        Component: CategoryNews,
+        loader: () => fetch("/news.json"),
+        hydrateFallbackElement: <Loading></Loading>
+      },
+    ],
+  },
+  {
+    path: "/auth",
+    element: <AuthenticationLayout></AuthenticationLayout>,
+    children: [
+      {
+        path: "/auth/login",
+        Component: Login,
+      },
+      {
+        path: "/auth/register",
+        Component: Register,
+      },
+    ],
+  },
+  {
+    path: "/news-details/:id",
+    element: 
+      <PrivetRoute>
+        <NewDetails></NewDetails>
+      </PrivetRoute>
+    ,
+    loader: () => fetch("/news.json"),
+    hydrateFallbackElement: <Loading></Loading>
+  },
+  {
+    path: "/*",
+    element: <h2>Error 404</h2>,
+  },
 ]);
 
 export default router

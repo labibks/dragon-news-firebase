@@ -4,7 +4,8 @@ import { AuthContext } from '../../Provider/AuthProvider';
 
 const Register = () => {
 
-    const {creatUser,setUser} = use(AuthContext)
+    const {creatUser,setUser,updateUser} = use(AuthContext)
+
 
     const handleRegister =(e)=>{
         e.preventDefault()
@@ -20,7 +21,16 @@ const Register = () => {
         creatUser(email, password)
           .then((result) => {
             console.log(result);
-            setUser(result.user)
+
+            updateUser({displayName: name,photoURL:photo})
+            .then(()=>{
+            setUser({ displayName: name, photoURL: photo });
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
           })
           .catch((error) => {
             alert(error)
@@ -36,16 +46,16 @@ const Register = () => {
             <fieldset className="fieldset">
                 {/* name */}
               <label className="label">Name</label>
-              <input type="text" name='name' className="input" placeholder="Name" />
+              <input type="text" name='name' className="input" placeholder="Name" required/>
               {/* photo url */}
               <label className="label">Photo URL</label>
-              <input type="text" name='photo' className="input" placeholder="Photo URL" />
+              <input type="text" name='photo' className="input" placeholder="Photo URL" required/>
               {/* email field */}
               <label className="label">Email</label>
-              <input type="email" name='email' className="input" placeholder="Email" />
+              <input type="email" name='email' className="input" placeholder="Email" required/>
               {/* password faield */}
               <label className="label">Password</label>
-              <input type="password" name='password' className="input" placeholder="Password" />
+              <input type="password" name='password' className="input" placeholder="Password" required/>
              
               <button type='submit' className="btn btn-neutral mt-4">Register</button>
               <p className="text-center font-bold py-3">
