@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, useNavigation } from 'react-router';
+import { Outlet, useLoaderData, useNavigation } from 'react-router';
 import Header from '../components/Header/Header';
 import LatestNews from '../components/LatestNews/LatestNews';
 import Navbar from '../components/Navbar/Navbar';
@@ -9,13 +9,14 @@ import Loading from '../Pages/Loading/Loading';
 
 const HomeLayout = () => {
   const {state}=useNavigation
+  const data = useLoaderData()
     return (
       <div>
         <header>
           <Header></Header>
         </header>
         <section className="w-11/12 mx-auto">
-          <LatestNews></LatestNews>
+          <LatestNews data={data}></LatestNews>
         </section>
         <section className="w-11/12 mx-auto">
           <Navbar></Navbar>

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router";
 import NewsCard from "../components/NewsCard/NewsCard";
+import LatestNews from "../components/LatestNews/LatestNews";
 
 const CategoryNews = () => {
   const { id } = useParams();
   const data = useLoaderData();
-  // console.log(id,data)
+  console.log(id,data)
   const [categoryNews, setCategoryNews] = useState([]);
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const CategoryNews = () => {
         }
 
       </div>
+      <LatestNews data={data}></LatestNews>
     </div>
   );
 };

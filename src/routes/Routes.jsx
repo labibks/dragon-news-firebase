@@ -13,6 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
+    loader: () => fetch("/news.json"),
     children: [
       {
         path: "/",
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
         path: "/category/:id",
         Component: CategoryNews,
         loader: () => fetch("/news.json"),
-        hydrateFallbackElement: <Loading></Loading>
+        hydrateFallbackElement: <Loading></Loading>,
       },
     ],
   },
@@ -42,13 +43,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/news-details/:id",
-    element: 
+    element: (
       <PrivetRoute>
         <NewDetails></NewDetails>
       </PrivetRoute>
-    ,
+    ),
     loader: () => fetch("/news.json"),
-    hydrateFallbackElement: <Loading></Loading>
+    hydrateFallbackElement: <Loading></Loading>,
   },
   {
     path: "/*",
